@@ -61,7 +61,7 @@ function draw() {
 
 function keyPressed() {
 
-	if (keyWentDown("r")) {
+	if (keyWentDown("up")) {
 
 		Matter.Body.applyForce(ball3.body, ball5.body.position, { x: - 100, y: - 100 });
 
