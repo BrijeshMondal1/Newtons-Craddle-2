@@ -31,6 +31,8 @@ function setup() {
 	chain4 = new Chain(ball4.body, width / 2 + 60);
 	chain5 = new Chain(ball5.body, width / 2 + 120);
 
+    backgroundColor = color(random(0, 255), random(0, 255), random(0, 255));
+
 	Engine.run(engine);
   
 }
@@ -38,8 +40,8 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background("white");
 
+  background(backgroundColor);
 
     chain1.display();
     chain2.display();
@@ -47,23 +49,25 @@ function draw() {
     chain4.display();
     chain5.display();
 	roof.display("grey");
-	ball1.display("cyan");
-	ball2.display("red");
-	ball3.display("blue");
-	ball4.display("orange");
-	ball5.display("orangered");
+	ball1.display();
+	ball2.display();
+	ball3.display();
+	ball4.display();
+	ball5.display();
 
-	keyPressed();
-
-  drawSprites();
+	drawSprites();
+	
+	textSize(35);
+	textFont("comic sans ms");
+	fill("black");
+	text("NEWTONS CRADDLE!", 50, 50);
+	textSize(15);
+	text("DRAG THE MOUSE TO MOVE THE BOB", 50, height- 150)
  
 }
 
-function keyPressed() {
+function mouseDragged() {
 
-	if (keyWentDown("up")) {
+		Matter.Body.setPosition(ball3.body, { x: mouseX, y: mouseY });
 
-		Matter.Body.applyForce(ball3.body, ball5.body.position, { x: - 100, y: - 100 });
-
-    }
 }
